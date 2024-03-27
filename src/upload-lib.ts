@@ -369,9 +369,7 @@ export function validateSarifFileSchema(sarifFilePath: string, logger: Logger) {
   const result = new jsonschema.Validator().validate(sarif, schema);
   // Filter errors related to invalid URIs in the artifactLocation field as this
   // is a breaking change. See https://github.com/github/codeql-action/issues/1703
-  const errors = (result.errors || []).filter(
-    (err) => err.argument !== "uri-reference",
-  );
+  const errors = result.errors || [];
   const warnings = (result.errors || []).filter(
     (err) => err.argument === "uri-reference",
   );
