@@ -67,6 +67,8 @@ async function run() {
     ),
   );
 
+  core.info("Starting upload-sarif action FOO BAR BLORTZ!");
+
   try {
     const uploadResult = await upload_lib.uploadFromActions(
       actionsUtil.getRequiredInput("sarif_file"),
